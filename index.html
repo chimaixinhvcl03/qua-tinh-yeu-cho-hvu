@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff3f5" />
+  <meta name="description" content="Một món quà bí mật dành riêng cho Vũ Minh Hùng 🤍" />
+  <title>Một món quà dành cho Hùng 🤍</title>
+  <style>
+    :root {
+      --pink: #f4b8c8;
+      --rose: #d96b8b;
+      --deep: #754353;
+      --cream: #fff8f4;
+      --white: #fffdfc;
+      --muted: #9b7882;
+      --shadow: 0 18px 55px rgba(130, 66, 88, .13);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--deep);
+      font-family: ui-rounded, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(255,255,255,.95) 0 3px, transparent 4px),
+        radial-gradient(circle at 88% 18%, rgba(255,255,255,.8) 0 4px, transparent 5px),
+        linear-gradient(145deg, #fff6f6 0%, #fff0f3 46%, #fff9f0 100%);
+      overflow-x: hidden;
+    }
+    button { font: inherit; }
+    .page { width: min(100% - 28px, 760px); margin: 0 auto; padding: 28px 0 52px; position: relative; }
+    .topline { text-align: center; color: var(--muted); font-size: .82rem; letter-spacing: .13em; text-transform: uppercase; }
+    header { text-align: center; padding: 22px 0 18px; }
+    .eyebrow { color: var(--rose); font-size: .9rem; letter-spacing: .08em; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: clamp(2.25rem, 8vw, 4.2rem); line-height: 1.04; margin: 12px 0; }
+    h1 span { color: var(--rose); font-style: italic; }
+    .subtitle { max-width: 510px; margin: 0 auto; color: #936d79; line-height: 1.7; font-size: 1rem; }
+    .hero { background: rgba(255,253,252,.72); border: 1px solid rgba(217,107,139,.18); box-shadow: var(--shadow); border-radius: 30px; padding: clamp(20px, 5vw, 38px); text-align: center; position: relative; overflow: hidden; }
+    .hero:before, .hero:after { content: "♡"; position: absolute; color: #f5c8d3; font-size: 3.5rem; opacity: .6; }
+    .hero:before { top: 10px; left: 18px; transform: rotate(-16deg); }
+    .hero:after { bottom: 6px; right: 18px; transform: rotate(15deg); }
+    .gift-wrap { width: 178px; height: 170px; margin: 10px auto 18px; position: relative; cursor: pointer; transition: transform .25s ease; outline: none; }
+    .gift-wrap:hover { transform: translateY(-4px) rotate(-1deg); }
+    .gift-wrap:focus-visible { outline: 3px solid var(--rose); outline-offset: 8px; border-radius: 20px; }
+    .gift-box { position: absolute; width: 150px; height: 105px; left: 14px; bottom: 4px; border-radius: 8px 8px 17px 17px; background: linear-gradient(135deg, #f6a9bd, #e982a1); box-shadow: 0 13px 22px rgba(196, 94, 126, .23); }
+    .gift-box:before { content: ""; position: absolute; top: 0; bottom: 0; left: 61px; width: 27px; background: #fff0d9; }
+    .gift-lid { position: absolute; width: 168px; height: 29px; left: 5px; bottom: 99px; border-radius: 8px; background: linear-gradient(135deg, #f8bfd0, #e87899); box-shadow: 0 5px 8px rgba(196, 94, 126, .18); transform-origin: 18px 25px; transition: transform .7s cubic-bezier(.2,.8,.2,1); z-index: 2; }
+    .gift-lid:before { content: ""; position: absolute; left: 70px; top: 0; width: 27px; height: 29px; background: #fff0d9; }
+    .bow { position: absolute; left: 69px; bottom: 121px; width: 40px; height: 30px; z-index: 3; transition: transform .6s; }
+    .bow:before, .bow:after { content: ""; position: absolute; width: 24px; height: 20px; border: 7px solid #fff0d9; border-radius: 80% 80% 25% 80%; }
+    .bow:before { left: -8px; transform: rotate(25deg); }
+    .bow:after { right: -8px; transform: scaleX(-1) rotate(25deg); }
+    .gift-wrap.open .gift-lid { transform: translate(-18px, -45px) rotate(-24deg); }
+    .gift-wrap.open .bow { transform: translate(-18px, -44px) rotate(-24deg); }
+    .gift-wrap.open { animation: pop .5s ease; }
+    @keyframes pop { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+    .tap-hint { font-size: .9rem; color: var(--muted); margin: 0 0 14px; }
+    .primary, .secondary { border: 0; border-radius: 999px; padding: 13px 22px; cursor: pointer; transition: transform .18s, box-shadow .18s; }
+    .primary { background: linear-gradient(135deg, #e783a0, #d86a8c); color: white; box-shadow: 0 8px 20px rgba(216,106,140,.25); }
+    .primary:hover, .secondary:hover { transform: translateY(-2px); }
+    .secondary { background: #fff; color: var(--rose); border: 1px solid #f0c6d1; }
+    button:focus-visible { outline: 3px solid #a84f6c; outline-offset: 3px; }
+    .surprises { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+    .surprise-card { border: 1px solid rgba(217,107,139,.19); border-radius: 20px; background: rgba(255,253,252,.8); min-height: 118px; padding: 17px 9px; color: var(--deep); box-shadow: 0 7px 22px rgba(130,66,88,.06); cursor: pointer; }
+    .surprise-card .emoji { display: block; font-size: 1.8rem; margin-bottom: 7px; }
+    .surprise-card strong { font-size: .92rem; font-weight: 650; }
+    .surprise-card small { display: block; color: var(--muted); margin-top: 5px; font-size: .75rem; }
+    .surprise-card[aria-expanded="true"] { background: #fff0f4; border-color: #e8a0b5; }
+    .message-panel { display: none; background: rgba(255,253,252,.94); border: 1px solid #f0ccd5; border-radius: 24px; padding: clamp(22px, 5vw, 34px); margin-top: 14px; box-shadow: var(--shadow); animation: reveal .45s ease both; }
+    .message-panel.show { display: block; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .panel-kicker { text-align: center; color: var(--rose); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
+    .message-panel h2 { text-align: center; font: 500 clamp(1.7rem, 6vw, 2.5rem)/1.2 Georgia, serif; margin: 9px 0 20px; }
+    .letter { font-family: Georgia, "Times New Roman", serif; font-size: 1.1rem; line-height: 1.9; white-space: pre-line; }
+    .signature { text-align: right; margin-top: 22px; font-family: Georgia, serif; font-style: italic; color: var(--rose); font-size: 1.2rem; }
+    .memory { text-align: center; line-height: 1.85; }
+    .big-heart { font-size: 3rem; display: block; margin: 8px; animation: heartbeat 1.4s infinite; }
+    @keyframes heartbeat { 0%,100% { transform: scale(1); } 12% { transform: scale(1.12); } 24% { transform: scale(1); } 36% { transform: scale(1.08); } }
+    .music-row { display: flex; justify-content: center; margin-top: 18px; }
+    .music-status { min-height: 1.3em; color: var(--muted); font-size: .83rem; margin-top: 9px; }
+    footer { text-align: center; padding: 28px 0 0; color: #a78790; font-size: .82rem; line-height: 1.7; }
+    .floating { position: fixed; bottom: -30px; pointer-events: none; z-index: 5; animation: float-up 4.5s linear forwards; opacity: .85; }
+    @keyframes float-up { to { transform: translateY(-110vh) rotate(25deg); opacity: 0; } }
+    .hidden { display: none !important; }
+    @media (max-width: 520px) {
+      .page { width: min(100% - 20px, 760px); padding-top: 18px; }
+      .hero { border-radius: 24px; }
+      .surprises { gap: 8px; }
+      .surprise-card { padding: 14px 5px; min-height: 110px; border-radius: 16px; }
+      .surprise-card strong { font-size: .82rem; }
+      .surprise-card small { font-size: .69rem; }
+      .letter { font-size: 1.03rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline">a little surprise, made with love ♡</div>
+    <header>
+      <div class="eyebrow">Gửi riêng cho một người đặc biệt</div>
+      <h1>Vũ Minh <span>Hùng</span> 🤍</h1>
+      <p class="subtitle">Có một món quà nhỏ em muốn dành cho anh. Đừng vội nhé — hãy mở từng điều bất ngờ một cách thật chậm rãi.</p>
+    </header>
+
+    <section class="hero" aria-labelledby="gift-title">
+      <div class="eyebrow" id="gift-title">Một chiếc hộp nhỏ, rất nhiều yêu thương</div>
+      <div class="gift-wrap" id="gift" role="button" tabindex="0" aria-label="Mở hộp quà">
+        <div class="gift-lid"></div><div class="bow"></div><div class="gift-box"></div>
+      </div>
+      <p class="tap-hint" id="tapHint">Chạm vào hộp quà để mở món quà đầu tiên ✨</p>
+      <button class="primary" id="openGift">Mở món quà của em ♡</button>
+    </section>
+
+    <section id="surpriseArea" class="hidden" aria-label="Những điều bất ngờ">
+      <div class="surprises">
+        <button class="surprise-card" data-panel="letterPanel" aria-expanded="false">
+          <span class="emoji">💌</span><strong>Lá thư nhỏ</strong><small>Mở lời em muốn nói</small>
+        </button>
+        <button class="surprise-card" data-panel="futurePanel" aria-expanded="false">
+          <span class="emoji">🦢</span><strong>Điều em mơ</strong><small>Một ngày trong tương lai</small>
+        </button>
+        <button class="surprise-card" data-panel="promisePanel" aria-expanded="false">
+          <span class="emoji">🤍</span><strong>Lời hứa bé xíu</strong><small>Dành riêng cho anh</small>
+        </button>
+      </div>
+
+      <article class="message-panel" id="letterPanel" aria-live="polite">
+        <div class="panel-kicker">Từ trái tim em</div>
+        <h2>Gửi anh Hùng của em</h2>
+        <div class="letter">Em mong rằng anh sẽ luôn hạnh phúc kể cả khi không có em, và nếu có chúng ta em mong là chúng ta sẽ mãi hạnh phúc như lúc đầu.
+
+Em yêu anh Vũ Minh Hùng ạ 🦢🤍</div>
+        <div class="signature">Thương anh thật nhiều ♡</div>
+      </article>
+
+      <article class="message-panel" id="futurePanel" aria-live="polite">
+        <div class="panel-kicker">Một bí mật trong tim em</div>
+        <h2>Người em từng hình dung</h2>
+        <div class="memory">
+          <span class="big-heart">🤍</span>
+          Chính anh là người khiến cho em đã nghĩ rằng người đứng đối diện em trên lễ đường hôm ấy sẽ là anh, chứ không phải ai khác.
+          <p>Em không biết tương lai sẽ đưa chúng ta đến đâu, nhưng hiện tại, em thật lòng trân trọng việc có anh trong cuộc đời mình.</p>
+        </div>
+      </article>
+
+      <article class="message-panel" id="promisePanel" aria-live="polite">
+        <div class="panel-kicker">Một lời hứa nhỏ thôi</div>
+        <h2>Mình cùng cố gắng nhé?</h2>
+        <div class="memory">
+          <span class="big-heart">🫶🏻</span>
+          Em không mong chúng ta lúc nào cũng hoàn hảo. Em chỉ mong khi có chuyện buồn, mình vẫn muốn lắng nghe nhau; khi giận dỗi, mình vẫn dịu dàng với nhau; và mỗi ngày đều nhớ rằng chúng ta đã chọn yêu nhau.
+          <p>Cảm ơn anh vì đã là anh — người em thương. 🤍</p>
+        </div>
+      </article>
+
+      <div class="music-row">
+        <button class="secondary" id="musicBtn" aria-pressed="false">♫ Bật nhạc cho món quà</button>
+      </div>
+      <div class="music-status" id="musicStatus" role="status" aria-live="polite">Nhạc chỉ phát khi anh bấm nút — em không muốn làm anh giật mình.</div>
+    </section>
+
+    <footer>
+      Làm bằng một chút ngại ngùng và thật nhiều yêu thương 🤍<br />
+      <span>Chỉ cần anh mỉm cười khi mở món quà này, em đã vui rồi.</span>
+    </footer>
+  </main>
+
+  <!-- Nhạc nền dùng âm thanh piano tự tạo bằng Web Audio API, không cần tải file ngoài. -->
+  <script>
+    const gift = document.getElementById('gift');
+    const openGift = document.getElementById('openGift');
+    const surpriseArea = document.getElementById('surpriseArea');
+    const tapHint = document.getElementById('tapHint');
+    const musicBtn = document.getElementById('musicBtn');
+    const musicStatus = document.getElementById('musicStatus');
+
+    function revealGift() {
+      if (!gift.classList.contains('open')) {
+        gift.classList.add('open');
+        surpriseArea.classList.remove('hidden');
+        tapHint.textContent = 'Món quà đã mở rồi — chọn một điều bất ngờ bên dưới nhé ♡';
+        openGift.textContent = 'Hộp quà đã mở 🤍';
+        openGift.disabled = true;
+        openGift.style.opacity = '.7';
+        burstHearts();
+        setTimeout(() => surpriseArea.scrollIntoView({ behavior: 'smooth', block: 'start' }), 180);
+      }
+    }
+    openGift.addEventListener('click', revealGift);
+    gift.addEventListener('click', revealGift);
+    gift.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); revealGift(); }
+    });
+
+    document.querySelectorAll('.surprise-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const panel = document.getElementById(card.dataset.panel);
+        const wasOpen = panel.classList.contains('show');
+        document.querySelectorAll('.message-panel').forEach(p => p.classList.remove('show'));
+        document.querySelectorAll('.surprise-card').forEach(c => c.setAttribute('aria-expanded', 'false'));
+        if (!wasOpen) {
+          panel.classList.add('show');
+          card.setAttribute('aria-expanded', 'true');
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          burstHearts(4);
+        }
+      });
+    });
+
+    function burstHearts(count = 8) {
+      const symbols = ['♡', '🤍', '✨', '💕'];
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement('span');
+        el.className = 'floating';
+        el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        el.style.left = (8 + Math.random() * 84) + 'vw';
+        el.style.fontSize = (16 + Math.random() * 18) + 'px';
+        el.style.animationDuration = (3.2 + Math.random() * 2.3) + 's';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 6000);
+      }
+    }
+
+    // Giai điệu piano ngắn được tổng hợp ngay trong trình duyệt; chỉ bắt đầu sau thao tác của người dùng.
+    let audioCtx = null;
+    let musicTimer = null;
+    let noteIndex = 0;
+    let playing = false;
+    const melody = [
+      [659.25, 0.30], [783.99, 0.30], [880.00, 0.55], [783.99, 0.30],
+      [698.46, 0.30], [659.25, 0.55], [587.33, 0.35], [659.25, 0.75],
+      [523.25, 0.30], [587.33, 0.30], [659.25, 0.55], [587.33, 0.30],
+      [493.88, 0.30], [523.25, 0.8]
+    ];
+    function playNote(freq, duration) {
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const mellow = audioCtx.createBiquadFilter();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+      mellow.type = 'lowpass';
+      mellow.frequency.value = 1800;
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.12, now + 0.025);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+      osc.connect(mellow); mellow.connect(gain); gain.connect(audioCtx.destination);
+      osc.start(now); osc.stop(now + duration + 0.03);
+    }
+    function scheduleNext() {
+      if (!playing) return;
+      const [freq, duration] = melody[noteIndex % melody.length];
+      playNote(freq, duration * 0.92);
+      noteIndex++;
+      musicTimer = setTimeout(scheduleNext, duration * 650);
+    }
+    musicBtn.addEventListener('click', async () => {
+      if (!playing) {
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContext) throw new Error('Trình duyệt không hỗ trợ âm thanh.');
+          audioCtx = audioCtx || new AudioContext();
+          await audioCtx.resume();
+          playing = true;
+          noteIndex = 0;
+          musicBtn.textContent = 'Ⅱ Tạm dừng nhạc';
+          musicBtn.setAttribute('aria-pressed', 'true');
+          musicStatus.textContent = 'Một giai điệu nhỏ dành cho anh đang phát ♡';
+          scheduleNext();
+        } catch (err) {
+          musicStatus.textContent = 'Không bật được nhạc trên trình duyệt này. Anh thử mở bằng Safari hoặc Chrome nhé.';
+        }
+      } else {
+        playing = false;
+        clearTimeout(musicTimer);
+        if (audioCtx && audioCtx.state === 'running') await audioCtx.suspend();
+        musicBtn.textContent = '♫ Bật nhạc cho món quà';
+        musicBtn.setAttribute('aria-pressed', 'false');
+        musicStatus.textContent = 'Nhạc đang tạm dừng. Khi muốn nghe, anh bấm nút nhé.';
+      }
+    });
+    document.addEventListener('visibilitychange', async () => {
+      if (document.hidden && playing && audioCtx) {
+        playing = false;
+        clearTimeout(musicTimer);
+        await audioCtx.suspend();
+        musicBtn.textContent = '♫ Bật nhạc cho món quà';
+        musicBtn.setAttribute('aria-pressed', 'false');
+        musicStatus.textContent = 'Nhạc đã tạm dừng khi anh rời trang.';
+      }
+    });
+  </script>
+</body>
+</html>
